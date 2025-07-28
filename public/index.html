@@ -145,6 +145,29 @@
             margin-top: 20px;
         }
 
+        .dashboard-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .dashboard-btn {
+            background: linear-gradient(45deg, #3498db, #2980b9);
+            color: white;
+            text-decoration: none;
+            display: inline-block;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: bold;
+            transition: transform 0.2s, box-shadow 0.2s;
+        }
+
+        .dashboard-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(52, 152, 219, 0.4);
+        }
+
         .sprint-status {
             background: #e3f2fd;
             padding: 20px;
@@ -229,7 +252,10 @@
                     <p id="userEmail"></p>
                     <p id="userRole"></p>
                 </div>
-                <button class="btn logout-btn" onclick="logout()">Logout</button>
+                <div class="dashboard-links">
+                    <a href="/sprint3-dashboard.html" class="btn dashboard-btn">🚀 Sprint 3 Dashboard</a>
+                    <button class="btn logout-btn" onclick="logout()">Logout</button>
+                </div>
             </div>
             
             <div class="sprint-status">
@@ -343,7 +369,7 @@
             if (!token) return;
 
             try {
-                const response = await fetch('/api/auth/profile', {
+                const response = await fetch('/api/users/profile', {
                     headers: {
                         'Authorization': 'Bearer ' + token
                     }
@@ -351,7 +377,7 @@
 
                 if (response.ok) {
                     const data = await response.json();
-                    currentUser = data.user;
+                    currentUser = data;
                     
                     document.getElementById('userName').textContent = currentUser.name;
                     document.getElementById('userEmail').textContent = currentUser.email;
@@ -362,28 +388,44 @@
                     document.getElementById('profileSection').classList.remove('hidden');
                     
                     loadSprintStatus();
+                } else {
+                    console.error('Profile load failed:', response.status);
+                    localStorage.removeItem('token');
+                    showMessage('Session expired. Please login again.', 'error');
                 }
             } catch (error) {
                 console.error('Error loading profile:', error);
+                localStorage.removeItem('token');
+                showMessage('Network error. Please try again.', 'error');
             }
         }
 
         // Load sprint status
         async function loadSprintStatus() {
             try {
-                const response = await fetch('/api/sprint-status');
-                const data = await response.json();
+                const token = localStorage.getItem('token');
+                const response = await fetch('/api/sprint/status', {
+                    headers: {
+                        'Authorization': 'Bearer ' + token
+                    }
+                });
                 
-                const sprintInfo = document.getElementById('sprintInfo');
-                sprintInfo.innerHTML = 
-                    '<p><strong>Sprint:</strong> ' + data.sprint + '</p>' +
-                    '<p><strong>Status:</strong> ' + data.status + '</p>' +
-                    '<p><strong>Completion:</strong> ' + data.completion + '</p>' +
-                    '<h4>Features:</h4>' +
-                    '<ul class="feature-list">' +
-                    data.features.map(feature => '<li>' + feature + '</li>').join('') +
-                    '</ul>' +
-                    '<p><strong>Next Milestone:</strong> ' + data.nextMilestone + '</p>';
+                if (response.ok) {
+                    const data = await response.json();
+                    
+                    const sprintInfo = document.getElementById('sprintInfo');
+                    sprintInfo.innerHTML = 
+                        '<p><strong>Sprint:</strong> ' + data.sprint_name + '</p>' +
+                        '<p><strong>Status:</strong> ' + data.status + '</p>' +
+                        '<p><strong>Progress:</strong> ' + data.progress.percentage + '% (' + data.progress.completed + '/' + data.progress.total + ' points)</p>' +
+                        '<h4>Features:</h4>' +
+                        '<ul class="feature-list">' +
+                        data.features.map(feature => '<li>' + feature + '</li>').join('') +
+                        '</ul>' +
+                        '<p><strong>Duration:</strong> ' + data.start_date + ' to ' + data.end_date + '</p>';
+                } else {
+                    console.error('Sprint status load failed:', response.status);
+                }
             } catch (error) {
                 console.error('Error loading sprint status:', error);
             }

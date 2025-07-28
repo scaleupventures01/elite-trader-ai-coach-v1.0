@@ -49,6 +49,10 @@ class ComprehensiveErrorHandler {
   }
 
   categorizeError(error) {
+    if (!error || !error.message) {
+      return 'GENERAL_ERROR';
+    }
+    
     if (error.message.includes('authentication') || error.message.includes('auth')) {
       return 'AUTHENTICATION_ERROR';
     } else if (error.message.includes('network') || error.message.includes('connection')) {
@@ -63,6 +67,10 @@ class ComprehensiveErrorHandler {
   }
 
   assessSeverity(error) {
+    if (!error || !error.message) {
+      return 'LOW';
+    }
+    
     if (error.message.includes('critical') || error.message.includes('fatal')) {
       return 'CRITICAL';
     } else if (error.message.includes('authentication') || error.message.includes('auth')) {

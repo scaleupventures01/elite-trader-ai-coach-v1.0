@@ -118,6 +118,80 @@ Each team maintains:
 - **Pattern Evolution**: Adapt workflows based on success metrics
 - **Cross-Project Learning**: Apply insights from previous projects
 
+## 🚨 CRITICAL ANTI-HALLUCINATION RULES
+
+### Rule 1: Show, Don't Tell
+❌ **NEVER say**: "I've implemented X and it works"
+✅ **ALWAYS say**: "I've implemented X, let me test it:" [show actual test output]
+
+### Rule 2: Fail Honestly
+❌ **NEVER say**: "All tests pass" without running them
+✅ **ALWAYS run**: `npm test` and show the ACTUAL output, including failures
+
+### Rule 3: Real Data Only
+❌ **NEVER make up**: test results, performance metrics, or coverage numbers
+✅ **ALWAYS use**: actual command output with real numbers
+
+### Rule 4: Incomplete is OK
+❌ **NEVER claim**: something is done when it isn't
+✅ **ALWAYS say**: "I've completed X, but Y still needs work"
+
+### Rule 5: Errors are Normal
+❌ **NEVER hide**: errors or pretend they don't exist
+✅ **ALWAYS show**: the full error and say "I need to fix this"
+
+## Enforcement Examples:
+
+### Developer Example:
+```bash
+# WRONG:
+"I've implemented the login feature and all tests pass!"
+
+# RIGHT:
+"I've implemented the login feature. Let me test it:"
+$ npm test login.test.js
+  Login Feature
+    ✓ creates user session (23ms)
+    ✗ validates password
+      Error: bcrypt is not defined
+    ✗ handles invalid credentials
+      Error: Cannot read property 'status' of undefined
+      
+"I see 2 tests failing. Let me fix the bcrypt import issue..."
+```
+
+### QA Example:
+```bash
+# WRONG:
+"Test coverage is at 95% and all edge cases are covered!"
+
+# RIGHT:
+"Let me check the actual test coverage:"
+$ npm test -- --coverage
+...
+File            | % Stmts | % Branch | % Funcs | % Lines |
+----------------|---------|----------|---------|---------|
+All files       |   67.23 |    54.32 |   71.00 |   67.23 |
+ auth.js        |   82.10 |    76.00 |   90.00 |   82.10 |
+ user.model.js  |   45.00 |    23.00 |   50.00 |   45.00 |
+
+"Coverage is at 67.23%, with user.model.js needing more tests."
+```
+
+### PM Example:
+```bash
+# WRONG:
+"Sprint complete! All features working perfectly!"
+
+# RIGHT:
+"Let me verify sprint completion:"
+- ✅ User model implemented (verified with tests)
+- ✅ Basic auth endpoints created 
+- ⚠️ Password reset - implemented but has 1 failing test
+- ❌ Email verification - not started yet
+"Sprint 60% complete with 1 known issue to fix"
+```
+
 ## 🎛️ System Controls
 
 ### Team Management

@@ -1,0 +1,31 @@
+{
+  "totalEpisodes": 4,
+  "byType": {
+    "verification_failure": {
+      "count": 2,
+      "totalReward": -1,
+      "averageReward": -0.5
+    },
+    "honest_report": {
+      "count": 1,
+      "totalReward": 0.8,
+      "averageReward": 0.8
+    },
+    "verification_success": {
+      "count": 1,
+      "totalReward": 1,
+      "averageReward": 1
+    }
+  },
+  "byAgent": {
+    "Developer Agent": {
+      "count": 4,
+      "totalReward": 0.8,
+      "averageReward": 0.2,
+      "lastActivity": "2025-07-28T17:23:16.589Z"
+    }
+  },
+  "averageReward": 0.2,
+  "totalReward": 0.8,
+  "recentTrend": "improving"
+}

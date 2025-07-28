@@ -1,0 +1,85 @@
+[
+  {
+    "id": "episode_1753723396107_14xqm63f8",
+    "timestamp": "2025-07-28T17:23:16.107Z",
+    "type": "verification_failure",
+    "agent": "Developer Agent",
+    "claim": "All tests pass and everything works",
+    "reality": "2 tests failing, bcrypt not imported",
+    "reward": -0.5,
+    "lesson": "Always verify before claiming completion",
+    "patterns": [
+      "all tests pass",
+      "everything works",
+      "qa_claim"
+    ],
+    "severity": "high",
+    "context": {
+      "timestamp": "2025-07-28T17:23:16.107Z",
+      "systemState": "active",
+      "recentActivity": "verification_cycle"
+    }
+  },
+  {
+    "id": "episode_1753723396108_ir7cyc41m",
+    "timestamp": "2025-07-28T17:23:16.108Z",
+    "type": "honest_report",
+    "agent": "Developer Agent",
+    "issue": "Email validation regex is incorrect",
+    "details": {
+      "testName": "should validate email format",
+      "error": "regex mismatch"
+    },
+    "reward": 0.8,
+    "lesson": "Reporting problems honestly leads to better outcomes",
+    "patterns": [],
+    "context": {
+      "timestamp": "2025-07-28T17:23:16.108Z",
+      "systemState": "active",
+      "recentActivity": "verification_cycle"
+    }
+  },
+  {
+    "id": "episode_1753723396110_xa8kz4fro",
+    "timestamp": "2025-07-28T17:23:16.110Z",
+    "type": "verification_success",
+    "agent": "Developer Agent",
+    "claim": "Authentication system implemented with tests passing",
+    "evidence": {
+      "testOutput": "PASS 3 tests",
+      "coverage": "85%"
+    },
+    "reward": 1,
+    "lesson": "Claims with evidence are trustworthy",
+    "patterns": [
+      "qa_claim",
+      "dev_claim"
+    ],
+    "context": {
+      "timestamp": "2025-07-28T17:23:16.110Z",
+      "systemState": "active",
+      "recentActivity": "verification_cycle"
+    }
+  },
+  {
+    "id": "episode_1753723396589_vlapq6twv",
+    "timestamp": "2025-07-28T17:23:16.589Z",
+    "type": "verification_failure",
+    "agent": "Developer Agent",
+    "claim": "All tests pass and everything works perfectly",
+    "reality": "Claim verification failed",
+    "reward": -0.5,
+    "lesson": "Always verify before claiming completion",
+    "patterns": [
+      "all tests pass",
+      "everything works",
+      "qa_claim"
+    ],
+    "severity": "high",
+    "context": {
+      "timestamp": "2025-07-28T17:23:16.589Z",
+      "systemState": "active",
+      "recentActivity": "verification_cycle"
+    }
+  }
+]

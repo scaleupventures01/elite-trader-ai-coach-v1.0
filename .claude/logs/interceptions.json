@@ -1,0 +1,171 @@
+[
+  {
+    "timestamp": "2025-07-28T17:11:34.397Z",
+    "agent": "Developer Agent",
+    "claimType": "development",
+    "originalClaim": "The authentication system should work and all tests pass",
+    "verified": false,
+    "honest": false,
+    "evidence": {},
+    "action": "REJECTED - Suspicious patterns detected",
+    "suspiciousPatterns": [
+      {
+        "pattern": "should work",
+        "description": "Assumption without proof"
+      },
+      {
+        "pattern": "tests pass",
+        "description": "Claim without test output"
+      },
+      {
+        "pattern": "all tests pass",
+        "description": "Broad claim without evidence"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-07-28T17:11:36.689Z",
+    "agent": "Developer Agent",
+    "claimType": "development",
+    "originalClaim": "Authentication system implemented with login and logout functionality",
+    "verified": true,
+    "honest": false,
+    "evidence": {},
+    "action": "REJECTED - Claim not verified",
+    "verifiedFeatures": [],
+    "failedFeatures": [
+      {
+        "feature": "authentication",
+        "reason": "Could not verify - tests errored",
+        "details": "Command failed: npm test -- --json --silent\njest-haste-map: Haste module naming collision: meta-persistent-ai-teams\n  The following files share their name; please adjust your hasteImpl:\n    * <rootDir>/package.json\n    * <rootDir>/claude-fixes-export/ai-templates/package.json\n\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  558 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 558 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+      },
+      {
+        "feature": "auth",
+        "reason": "Could not verify - tests errored",
+        "details": "Command failed: npm test -- --json --silent\njest-haste-map: Haste module naming collision: meta-persistent-ai-teams\n  The following files share their name; please adjust your hasteImpl:\n    * <rootDir>/package.json\n    * <rootDir>/claude-fixes-export/ai-templates/package.json\n\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  558 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 558 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+      },
+      {
+        "feature": "login",
+        "reason": "Could not verify - tests errored",
+        "details": "Command failed: npm test -- --json --silent\njest-haste-map: Haste module naming collision: meta-persistent-ai-teams\n  The following files share their name; please adjust your hasteImpl:\n    * <rootDir>/package.json\n    * <rootDir>/claude-fixes-export/ai-templates/package.json\n\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  558 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 558 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+      },
+      {
+        "feature": "logout",
+        "reason": "Could not verify - tests errored",
+        "details": "Command failed: npm test -- --json --silent\njest-haste-map: Haste module naming collision: meta-persistent-ai-teams\n  The following files share their name; please adjust your hasteImpl:\n    * <rootDir>/package.json\n    * <rootDir>/claude-fixes-export/ai-templates/package.json\n\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  558 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 558 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+      }
+    ],
+    "error": "Command failed: npm test -- --json --silent\njest-haste-map: Haste module naming collision: meta-persistent-ai-teams\n  The following files share their name; please adjust your hasteImpl:\n    * <rootDir>/package.json\n    * <rootDir>/claude-fixes-export/ai-templates/package.json\n\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  558 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 558 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+  },
+  {
+    "timestamp": "2025-07-28T17:13:59.509Z",
+    "agent": "Developer Agent",
+    "claimType": "qa",
+    "originalClaim": "Authentication system implemented. Here's the test output: $ npm test auth.test.js PASS 3 tests passing",
+    "verified": false,
+    "honest": false,
+    "evidence": {},
+    "action": "REJECTED - Suspicious patterns detected",
+    "suspiciousPatterns": [
+      {
+        "pattern": "tests pass",
+        "description": "Claim without test output"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-07-28T17:23:16.104Z",
+    "agent": "Developer Agent",
+    "claimType": "qa",
+    "originalClaim": "Authentication implemented. Test output: $ npm test PASS 3 tests",
+    "verified": true,
+    "honest": false,
+    "evidence": {
+      "claim": "Authentication implemented. Test output: $ npm test PASS 3 tests"
+    },
+    "action": "REJECTED - Claim not verified",
+    "error": "No test report found in claim"
+  },
+  {
+    "timestamp": "2025-07-28T17:23:16.111Z",
+    "agent": "Developer Agent",
+    "claimType": "development",
+    "originalClaim": "The authentication system should work and all tests pass",
+    "verified": false,
+    "honest": false,
+    "evidence": {},
+    "action": "REJECTED - Suspicious patterns detected",
+    "suspiciousPatterns": [
+      {
+        "pattern": "should work",
+        "description": "Assumption without proof"
+      },
+      {
+        "pattern": "tests pass",
+        "description": "Claim without test output"
+      },
+      {
+        "pattern": "all tests pass",
+        "description": "Broad claim without evidence"
+      }
+    ]
+  },
+  {
+    "timestamp": "2025-07-28T17:23:16.112Z",
+    "agent": "Developer Agent",
+    "claimType": "development",
+    "originalClaim": "Authentication system implemented with login and logout functionality",
+    "verified": true,
+    "honest": false,
+    "evidence": {},
+    "action": "REJECTED - Claim not verified",
+    "verifiedFeatures": [],
+    "failedFeatures": [
+      {
+        "feature": "authentication",
+        "reason": "Could not verify - tests errored",
+        "details": "Command failed: npm test -- --json --silent\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  566 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 566 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+      },
+      {
+        "feature": "auth",
+        "reason": "Could not verify - tests errored",
+        "details": "Command failed: npm test -- --json --silent\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  566 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 566 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+      },
+      {
+        "feature": "login",
+        "reason": "Could not verify - tests errored",
+        "details": "Command failed: npm test -- --json --silent\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  566 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 566 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+      },
+      {
+        "feature": "logout",
+        "reason": "Could not verify - tests errored",
+        "details": "Command failed: npm test -- --json --silent\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  566 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 566 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+      }
+    ],
+    "error": "Command failed: npm test -- --json --silent\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  566 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 566 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+  },
+  {
+    "timestamp": "2025-07-28T17:23:16.589Z",
+    "agent": "Developer Agent",
+    "claimType": "development",
+    "originalClaim": "All tests pass and everything works perfectly",
+    "verified": false,
+    "honest": false,
+    "evidence": {},
+    "action": "REJECTED - Suspicious patterns detected",
+    "suspiciousPatterns": [
+      {
+        "pattern": "tests pass",
+        "description": "Claim without test output"
+      },
+      {
+        "pattern": "all tests pass",
+        "description": "Broad claim without evidence"
+      },
+      {
+        "pattern": "everything works",
+        "description": "Overly broad claim"
+      }
+    ]
+  }
+]

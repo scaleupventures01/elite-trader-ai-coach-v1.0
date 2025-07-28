@@ -1,0 +1,76 @@
+[
+  {
+    "timestamp": "2025-07-28T17:11:36.690Z",
+    "agent": "Developer Agent",
+    "claimType": "development",
+    "claimed": [
+      "authentication",
+      "auth",
+      "login",
+      "logout"
+    ],
+    "verified": [],
+    "failed": [
+      {
+        "feature": "authentication",
+        "reason": "Could not verify - tests errored",
+        "details": "Command failed: npm test -- --json --silent\njest-haste-map: Haste module naming collision: meta-persistent-ai-teams\n  The following files share their name; please adjust your hasteImpl:\n    * <rootDir>/package.json\n    * <rootDir>/claude-fixes-export/ai-templates/package.json\n\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  558 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 558 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+      },
+      {
+        "feature": "auth",
+        "reason": "Could not verify - tests errored",
+        "details": "Command failed: npm test -- --json --silent\njest-haste-map: Haste module naming collision: meta-persistent-ai-teams\n  The following files share their name; please adjust your hasteImpl:\n    * <rootDir>/package.json\n    * <rootDir>/claude-fixes-export/ai-templates/package.json\n\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  558 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 558 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+      },
+      {
+        "feature": "login",
+        "reason": "Could not verify - tests errored",
+        "details": "Command failed: npm test -- --json --silent\njest-haste-map: Haste module naming collision: meta-persistent-ai-teams\n  The following files share their name; please adjust your hasteImpl:\n    * <rootDir>/package.json\n    * <rootDir>/claude-fixes-export/ai-templates/package.json\n\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  558 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 558 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+      },
+      {
+        "feature": "logout",
+        "reason": "Could not verify - tests errored",
+        "details": "Command failed: npm test -- --json --silent\njest-haste-map: Haste module naming collision: meta-persistent-ai-teams\n  The following files share their name; please adjust your hasteImpl:\n    * <rootDir>/package.json\n    * <rootDir>/claude-fixes-export/ai-templates/package.json\n\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  558 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 558 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+      }
+    ],
+    "evidence": {},
+    "honest": false,
+    "error": "Command failed: npm test -- --json --silent\njest-haste-map: Haste module naming collision: meta-persistent-ai-teams\n  The following files share their name; please adjust your hasteImpl:\n    * <rootDir>/package.json\n    * <rootDir>/claude-fixes-export/ai-templates/package.json\n\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  558 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 558 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+  },
+  {
+    "timestamp": "2025-07-28T17:23:16.113Z",
+    "agent": "Developer Agent",
+    "claimType": "development",
+    "claimed": [
+      "authentication",
+      "auth",
+      "login",
+      "logout"
+    ],
+    "verified": [],
+    "failed": [
+      {
+        "feature": "authentication",
+        "reason": "Could not verify - tests errored",
+        "details": "Command failed: npm test -- --json --silent\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  566 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 566 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+      },
+      {
+        "feature": "auth",
+        "reason": "Could not verify - tests errored",
+        "details": "Command failed: npm test -- --json --silent\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  566 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 566 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+      },
+      {
+        "feature": "login",
+        "reason": "Could not verify - tests errored",
+        "details": "Command failed: npm test -- --json --silent\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  566 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 566 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+      },
+      {
+        "feature": "logout",
+        "reason": "Could not verify - tests errored",
+        "details": "Command failed: npm test -- --json --silent\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  566 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 566 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+      }
+    ],
+    "evidence": {},
+    "honest": false,
+    "error": "Command failed: npm test -- --json --silent\nNo tests found, exiting with code 1\nRun with `--passWithNoTests` to exit with code 0\nIn /Users/calvinwilliamsjr/Dev Projects/Elite Trader AI Coach v1.0\n  566 files checked.\n  testMatch: **/__tests__/**/*.[jt]s?(x), **/?(*.)+(spec|test).[tj]s?(x) - 0 matches\n  testPathIgnorePatterns: /node_modules/ - 566 matches\n  testRegex:  - 0 matches\nPattern:  - 0 matches\n"
+  }
+]

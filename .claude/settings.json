@@ -1,0 +1,39 @@
+{
+  "verification": {
+    "required": true,
+    "blockUnverifiedClaims": true,
+    "requireCommandOutput": true,
+    "honestReporting": {
+      "reward": 1.0,
+      "falseClaimPenalty": -2.0
+    },
+    "verificationRules": {
+      "showActualOutput": true,
+      "includeErrors": true,
+      "reportActualState": true,
+      "provideEvidence": true,
+      "acknowledgeIssues": true
+    },
+    "enforcement": {
+      "autoBlock": true,
+      "requireProof": true,
+      "penalizeFalseClaims": true,
+      "rewardHonesty": true
+    }
+  },
+  "agents": {
+    "defaultBehavior": {
+      "mustVerify": true,
+      "showCommandOutput": true,
+      "acknowledgeFailures": true,
+      "provideEvidence": true
+    }
+  },
+  "system": {
+    "truthfulness": {
+      "enabled": true,
+      "strictMode": true,
+      "learningEnabled": true
+    }
+  }
+} 

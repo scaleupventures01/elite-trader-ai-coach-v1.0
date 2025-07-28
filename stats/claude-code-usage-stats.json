@@ -1,0 +1,370 @@
+{
+  "totalCalls": 35,
+  "successfulCalls": 32,
+  "failedCalls": 3,
+  "totalTokensUsed": 74063,
+  "totalTimeSpent": 521674,
+  "claudeCodePercentage": "91.43",
+  "fallbackPercentage": "8.57",
+  "sessions": [
+    {
+      "name": "Claude Code Usage Test",
+      "description": "Testing usage tracking with Claude Code API",
+      "startTime": "2025-07-27T23:35:09.024Z",
+      "claudeCodeCalls": 3,
+      "fallbackCalls": 1,
+      "totalCalls": 4,
+      "tokensUsed": 119,
+      "timeSpent": 9848,
+      "activities": [
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:35:11.449Z",
+          "prompt": "What is 2+2?",
+          "response": "2+2 = 4",
+          "tokensUsed": 25,
+          "duration": 2424,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:35:13.875Z",
+          "prompt": "Generate a simple JavaScript function.",
+          "response": "Here's a simple JavaScript function that takes two numbers as parameters and returns their sum:\n\n```...",
+          "tokensUsed": 94,
+          "duration": 2424,
+          "success": true
+        },
+        {
+          "type": "fallback",
+          "timestamp": "2025-07-27T23:35:13.876Z",
+          "activity": "Manual code generation",
+          "reason": "API not available",
+          "success": false
+        },
+        {
+          "type": "claude-code-failed",
+          "timestamp": "2025-07-27T23:35:13.876Z",
+          "prompt": "Test prompt",
+          "error": "Simulated API failure",
+          "duration": 5000,
+          "success": false
+        }
+      ],
+      "endTime": "2025-07-27T23:35:13.876Z",
+      "duration": 4852,
+      "claudeCodePercentage": "75.00",
+      "fallbackPercentage": "25.00"
+    },
+    {
+      "name": "Claude Code Usage Retrospective",
+      "description": "Analyzing Claude Code usage patterns and effectiveness",
+      "startTime": "2025-07-27T23:35:16.670Z",
+      "claudeCodeCalls": 3,
+      "fallbackCalls": 0,
+      "totalCalls": 3,
+      "tokensUsed": 4863,
+      "timeSpent": 53897,
+      "activities": [
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:35:34.683Z",
+          "prompt": "Analyze the Claude Code usage patterns from this retrospective data:\n\n{\n  \"overall\": {\n    \"totalCal...",
+          "response": "I'll analyze the Claude Code usage data across your requested dimensions:\n\n1. **Usage Patterns**\n- C...",
+          "tokensUsed": 1476,
+          "duration": 18010,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:35:50.722Z",
+          "prompt": "Based on this Claude Code usage data, analyze process improvements needed:\n\n{\n  \"overall\": {\n    \"to...",
+          "response": "Here's a comprehensive analysis of the Claude Code usage data and recommended process improvements:\n...",
+          "tokensUsed": 1519,
+          "duration": 16038,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:36:10.572Z",
+          "prompt": "Analyze the technical aspects of Claude Code usage from this data:\n\n{\n  \"overall\": {\n    \"totalCalls...",
+          "response": "I'll provide a detailed technical analysis based on the provided data:\n\n1. **API Performance**\n- Suc...",
+          "tokensUsed": 1868,
+          "duration": 19849,
+          "success": true
+        }
+      ],
+      "endTime": "2025-07-27T23:36:10.573Z",
+      "duration": 53903,
+      "claudeCodePercentage": "100.00",
+      "fallbackPercentage": "0.00"
+    },
+    {
+      "name": "Code Review and Refactor",
+      "description": "Analyzing and refactoring code for minimal token usage",
+      "startTime": "2025-07-27T23:37:50.070Z",
+      "claudeCodeCalls": 28,
+      "fallbackCalls": 0,
+      "totalCalls": 28,
+      "tokensUsed": 69081,
+      "timeSpent": 457929,
+      "activities": [
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:38:12.150Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: utils/api-error-handler.js\nL...",
+          "response": "I'll analyze the code for token optimization opportunities:\n\n### 1. High Token Usage Areas\n\n1. **Err...",
+          "tokensUsed": 4343,
+          "duration": 22073,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:38:30.633Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: utils/auth-testing-framework...",
+          "response": "I'll analyze the code for token usage optimization and provide specific recommendations:\n\n### 1. Tok...",
+          "tokensUsed": 2055,
+          "duration": 18479,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:38:47.346Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: utils/claude-code-api-fix.js...",
+          "response": "I'll analyze the code for token usage optimization:\n\n### 1. Token Usage Issues\n\n**High Token Consump...",
+          "tokensUsed": 2235,
+          "duration": 16712,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:39:11.636Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: utils/claude-code-auth-fix.j...",
+          "response": "I'll analyze the code for token usage optimization and provide specific recommendations:\n\n### 1. Hig...",
+          "tokensUsed": 3762,
+          "duration": 24289,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:39:32.365Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: utils/claude-code-error-hand...",
+          "response": "Here's a detailed analysis of the code for token usage optimization:\n\n### 1. High Token Usage Areas\n...",
+          "tokensUsed": 5498,
+          "duration": 20728,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:39:50.881Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: utils/claude-code-usage-trac...",
+          "response": "I'll analyze the code for token usage optimization and provide specific recommendations:\n\n### 1. Hig...",
+          "tokensUsed": 5174,
+          "duration": 18515,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:40:08.089Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: utils/comprehensive-error-ha...",
+          "response": "I'll analyze the code for token usage optimization:\n\n### 1. High Token Usage Areas\n\n1. **Repetitive ...",
+          "tokensUsed": 2668,
+          "duration": 17207,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:40:27.836Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: utils/fallback-strategies.js...",
+          "response": "I'll analyze the code for token optimization opportunities:\n\n### 1. High Token Usage Areas\n\n1. **Str...",
+          "tokensUsed": 6144,
+          "duration": 19746,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:40:46.861Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: utils/file-versioning.js\nLin...",
+          "response": "Here's my analysis for token usage optimization:\n\n### 1. High Token Usage Areas\n\n1. **Redundant Erro...",
+          "tokensUsed": 4562,
+          "duration": 19023,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:41:07.653Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: utils/logger.js\nLines: 128\nS...",
+          "response": "I'll analyze the logger.js file for token optimization opportunities:\n\n### 1. Token Usage Analysis &...",
+          "tokensUsed": 2071,
+          "duration": 20790,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:41:28.049Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: utils/retry-strategy.js\nLine...",
+          "response": "Here's my analysis of the retry-strategy.js file for token optimization:\n\n### 1. Token-Heavy Areas\n\n...",
+          "tokensUsed": 4108,
+          "duration": 20395,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:41:45.984Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: utils/team-activity-tracker....",
+          "response": "I'll analyze the code for token usage optimization:\n\n### 1. High Token Usage Areas\n\n1. **Team Defini...",
+          "tokensUsed": 3722,
+          "duration": 17933,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:42:04.203Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: utils/validation-checkpoints...",
+          "response": "I'll analyze the code for token usage optimization and provide specific recommendations:\n\n### 1. Hig...",
+          "tokensUsed": 2566,
+          "duration": 18219,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:42:16.820Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: config/api-config.js\nLines: ...",
+          "response": "I'll analyze the configuration file for token usage optimization:\n\n### 1. Token Usage Analysis\nThe f...",
+          "tokensUsed": 984,
+          "duration": 12616,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:42:29.945Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: config/auth-config.js\nLines:...",
+          "response": "I'll analyze the authentication configuration file for token usage optimization:\n\n### 1. Token Usage...",
+          "tokensUsed": 957,
+          "duration": 13124,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:42:43.720Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: config/claude-code-config.js...",
+          "response": "I'll analyze the code for token usage optimization:\n\n### 1. Token Usage Analysis\n\n**Redundant API Ke...",
+          "tokensUsed": 1184,
+          "duration": 13774,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:42:54.596Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: config/documentation-config....",
+          "response": "I'll analyze the documentation configuration file for token optimization:\n\n**1. Token Usage Analysis...",
+          "tokensUsed": 865,
+          "duration": 10875,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:43:06.524Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: config/error-config.js\nLines...",
+          "response": "I'll analyze the error configuration file for token optimization opportunities:\n\n1. **Token Usage An...",
+          "tokensUsed": 843,
+          "duration": 11928,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:43:15.836Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: config/testing-config.js\nLin...",
+          "response": "I'll analyze the testing configuration file for token optimization opportunities:\n\n1. **Token Usage ...",
+          "tokensUsed": 774,
+          "duration": 9311,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:43:27.687Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: config/validation-config.js\n...",
+          "response": "Here's my analysis of the validation configuration file for token usage optimization:\n\n1. **Token Us...",
+          "tokensUsed": 839,
+          "duration": 11851,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:43:44.918Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: config/versioning-config.js\n...",
+          "response": "Here's my analysis for token usage optimization:\n\n### 1. High Token Usage Areas\n\n1. **Large Configur...",
+          "tokensUsed": 3192,
+          "duration": 17230,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:44:00.060Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: test/auth-testing-suite.js\nL...",
+          "response": "I'll analyze the code for token usage optimization:\n\n### 1. Token Usage Analysis\n\nHigh Token Usage A...",
+          "tokensUsed": 1619,
+          "duration": 15142,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:44:18.557Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: test/claude-code-usage-track...",
+          "response": "I'll analyze the code for token usage optimization:\n\n### 1. Token Usage Optimization Issues\n\n**High ...",
+          "tokensUsed": 2064,
+          "duration": 18497,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:44:34.197Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: test/error-handling-test.js\n...",
+          "response": "I'll analyze the code for token usage optimization:\n\n### 1. Token Usage Analysis\n\nHigh Token Usage A...",
+          "tokensUsed": 1623,
+          "duration": 15639,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:44:49.426Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: test/framework-test.js\nLines...",
+          "response": "I'll analyze the code for token usage optimization:\n\n### 1. Token Usage Analysis\n\nHigh Token Usage A...",
+          "tokensUsed": 1607,
+          "duration": 15228,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:45:05.970Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: test/team-activity-tracker-t...",
+          "response": "I'll analyze the code for token usage optimization:\n\n### 1. Token Usage Analysis\n\nHigh Token Consump...",
+          "tokensUsed": 1808,
+          "duration": 16542,
+          "success": true
+        },
+        {
+          "type": "claude-code",
+          "timestamp": "2025-07-27T23:45:24.064Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: test/validation-test.js\nLine...",
+          "response": "I'll analyze the code and provide recommendations for token usage optimization:\n\n1. **Token Usage Op...",
+          "tokensUsed": 1814,
+          "duration": 18093,
+          "success": true
+        },
+        {
+          "type": "claude-code-failed",
+          "timestamp": "2025-07-27T23:45:28.038Z",
+          "prompt": "Conduct a code review for token usage optimization on this file:\n\nFile: frameworks/api-integration-f...",
+          "error": "API request failed: 502 - <html>\r\n<head><title>502 Bad Gateway</title></head>\r\n<body>\r\n<center><h1>502 Bad Gateway</h1></center>\r\n<hr><center>cloudflare</center>\r\n</body>\r\n</html>\r\n",
+          "duration": 3970,
+          "success": false
+        }
+      ],
+      "endTime": "2025-07-27T23:45:28.040Z",
+      "duration": 457970,
+      "claudeCodePercentage": "100.00",
+      "fallbackPercentage": "0.00"
+    }
+  ]
+}

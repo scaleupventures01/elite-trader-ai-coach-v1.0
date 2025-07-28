@@ -2,6 +2,10 @@ const { ClaudeCodeAPI } = require('./utils/claude-code-api-fix.js');
 const { TeamActivityTracker } = require('./utils/team-activity-tracker.js');
 const { ComprehensiveErrorHandler } = require('./utils/comprehensive-error-handler.js');
 
+
+// Using Claude Sonnet 4: claude-sonnet-4-20250514
+
+// Updated to use actual Claude Sonnet 4: claude-sonnet-4-20250514 - 2025-07-28T02:23:07.294Z
 class MetaTeamEnhancedPRDAnalysis {
     constructor() {
         this.claudeAPI = new ClaudeCodeAPI();

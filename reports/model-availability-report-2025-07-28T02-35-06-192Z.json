@@ -1,0 +1,149 @@
+{
+  "timestamp": "2025-07-28T02:35:06.029Z",
+  "availableModels": [
+    {
+      "identifier": "claude-3-opus-20240229",
+      "type": "opus",
+      "status": "available"
+    },
+    {
+      "identifier": "claude-3-sonnet-20240229",
+      "type": "sonnet",
+      "status": "available"
+    },
+    {
+      "identifier": "claude-3-5-sonnet-20241022",
+      "type": "sonnet",
+      "status": "available"
+    },
+    {
+      "identifier": "claude-sonnet-4-20250514",
+      "type": "sonnet",
+      "status": "available"
+    },
+    {
+      "identifier": "claude-3-haiku-20240307",
+      "type": "haiku",
+      "status": "available"
+    },
+    {
+      "identifier": "claude-3-5-haiku-20241022",
+      "type": "haiku",
+      "status": "available"
+    }
+  ],
+  "configurationModels": [
+    {
+      "alias": "opus",
+      "identifier": "claude-3-opus-20240229",
+      "type": "opus",
+      "status": "configured"
+    },
+    {
+      "alias": "sonnet",
+      "identifier": "claude-sonnet-4-20250514",
+      "type": "sonnet",
+      "status": "configured"
+    },
+    {
+      "alias": "haiku",
+      "identifier": "claude-3-haiku-20240307",
+      "type": "haiku",
+      "status": "configured"
+    },
+    {
+      "alias": "claude4",
+      "identifier": "claude-sonnet-4-20250514",
+      "type": "sonnet",
+      "status": "configured"
+    },
+    {
+      "alias": "latest",
+      "identifier": "claude-sonnet-4-20250514",
+      "type": "sonnet",
+      "status": "configured"
+    }
+  ],
+  "discrepancies": [
+    {
+      "type": "unconfigured_available",
+      "model": "claude-3-sonnet-20240229",
+      "severity": "MEDIUM",
+      "description": "Model claude-3-sonnet-20240229 is available but not configured"
+    },
+    {
+      "type": "unconfigured_available",
+      "model": "claude-3-5-sonnet-20241022",
+      "severity": "MEDIUM",
+      "description": "Model claude-3-5-sonnet-20241022 is available but not configured"
+    },
+    {
+      "type": "unconfigured_available",
+      "model": "claude-3-5-haiku-20241022",
+      "severity": "MEDIUM",
+      "description": "Model claude-3-5-haiku-20241022 is available but not configured"
+    },
+    {
+      "type": "outdated_model",
+      "model": "claude-3-5-sonnet-20241022",
+      "severity": "MEDIUM",
+      "description": "Model claude-3-5-sonnet-20241022 is outdated, newer version available"
+    },
+    {
+      "type": "outdated_model",
+      "model": "claude-sonnet-4-20250514",
+      "severity": "MEDIUM",
+      "description": "Model claude-sonnet-4-20250514 is outdated, newer version available"
+    },
+    {
+      "type": "outdated_model",
+      "model": "claude-3-5-haiku-20241022",
+      "severity": "MEDIUM",
+      "description": "Model claude-3-5-haiku-20241022 is outdated, newer version available"
+    }
+  ],
+  "recommendations": [
+    {
+      "priority": "MEDIUM",
+      "action": "Add available model to configuration: claude-3-sonnet-20240229",
+      "impact": "Enables use of latest models"
+    },
+    {
+      "priority": "MEDIUM",
+      "action": "Add available model to configuration: claude-3-5-sonnet-20241022",
+      "impact": "Enables use of latest models"
+    },
+    {
+      "priority": "MEDIUM",
+      "action": "Add available model to configuration: claude-3-5-haiku-20241022",
+      "impact": "Enables use of latest models"
+    },
+    {
+      "priority": "MEDIUM",
+      "action": "Update to newer model version",
+      "impact": "Improves performance and capabilities"
+    },
+    {
+      "priority": "MEDIUM",
+      "action": "Update to newer model version",
+      "impact": "Improves performance and capabilities"
+    },
+    {
+      "priority": "MEDIUM",
+      "action": "Update to newer model version",
+      "impact": "Improves performance and capabilities"
+    },
+    {
+      "priority": "LOW",
+      "action": "Set up automated model availability monitoring",
+      "impact": "Prevents future configuration drift"
+    }
+  ],
+  "summary": {
+    "totalAvailableModels": 6,
+    "totalConfiguredModels": 5,
+    "discrepanciesFound": 6,
+    "recommendationsGenerated": 7,
+    "status": "NEEDS_ATTENTION"
+  }
+}

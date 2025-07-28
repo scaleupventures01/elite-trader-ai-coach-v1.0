@@ -4,6 +4,10 @@ const { ComprehensiveErrorHandler } = require('./utils/comprehensive-error-handl
 const fs = require('fs');
 const path = require('path');
 
+
+// Using Claude Sonnet 4: claude-sonnet-4-20250514
+
+// Updated to use actual Claude Sonnet 4: claude-sonnet-4-20250514 - 2025-07-28T02:23:07.293Z
 class MetaTeamDetailedRoadmapCreator {
     constructor() {
         this.claudeAPI = new ClaudeCodeAPI();

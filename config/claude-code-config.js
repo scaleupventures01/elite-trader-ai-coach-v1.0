@@ -14,7 +14,8 @@ module.exports = {
   models: {
     opus: 'claude-3-opus-20240229',
     sonnet: 'claude-3-5-sonnet-20241022',
-    haiku: 'claude-3-haiku-20240307'
+    haiku: 'claude-3-haiku-20240307',
+    claude4: 'claude-3-5-sonnet-20241022'
   },
   defaultModel: 'claude-3-5-sonnet-20241022',
   timeout: 30000,

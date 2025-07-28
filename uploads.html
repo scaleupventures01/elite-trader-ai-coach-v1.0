@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Uploaded Files - Hello World</title>
+    <link rel="stylesheet" href="uploads.css">
+</head>
+<body>
+    <header class="page-header">
+        <div class="header-content">
+            <h1>📁 Uploaded Files</h1>
+            <nav>
+                <a href="index.html" class="nav-link">← Back to Upload</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="files-container">
+            <div class="files-header">
+                <h2>Your Uploaded Files</h2>
+                <div class="file-stats">
+                    <span id="file-count">0 files</span>
+                    <span id="total-size">0 KB</span>
+                </div>
+            </div>
+            
+            <div class="files-grid" id="files-grid">
+                <!-- Files will be loaded here -->
+            </div>
+            
+            <div class="no-files" id="no-files" style="display: none;">
+                <div class="no-files-content">
+                    <div class="no-files-icon">📁</div>
+                    <h3>No files uploaded yet</h3>
+                    <p>Upload some files to see them here!</p>
+                    <a href="index.html" class="btn btn-primary">Go Upload Files</a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- File Preview Modal -->
+    <div class="modal" id="preview-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3 id="modal-title">File Preview</h3>
+                <button class="modal-close" id="modal-close">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Preview content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <script src="uploads.js"></script>
+</body>
+</html>

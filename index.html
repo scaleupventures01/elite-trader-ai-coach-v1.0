@@ -1,0 +1,1201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hello World Confetti App - File Upload</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow-x: hidden;
+            padding: 20px;
+        }
+
+        .container {
+            text-align: center;
+            background: rgba(255, 255, 255, 0.95);
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            max-width: 800px;
+            width: 100%;
+        }
+
+        .nav-links {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 1rem;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.2);
+            padding: 0.5rem 1rem;
+            border-radius: 8px;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-link:hover {
+            background: rgba(255, 255, 255, 0.3);
+            transform: translateY(-2px);
+        }
+
+        h1 {
+            color: #333;
+            font-size: 3rem;
+            margin-bottom: 2rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .hello-button {
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4);
+            color: white;
+            border: none;
+            padding: 1rem 2rem;
+            font-size: 1.5rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 2rem;
+        }
+
+        .hello-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+            background: linear-gradient(45deg, #ff5252, #26a69a);
+        }
+
+        .hello-button:active {
+            transform: translateY(-1px);
+        }
+
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            pointer-events: none;
+            z-index: 1000;
+        }
+
+        .message {
+            margin-top: 2rem;
+            font-size: 1.2rem;
+            color: #666;
+            opacity: 0;
+            transition: opacity 0.5s ease;
+        }
+
+        .message.show {
+            opacity: 1;
+        }
+
+        .counter {
+            margin-top: 1rem;
+            font-size: 1rem;
+            color: #888;
+        }
+
+        /* Memory Header Styles */
+        .memory-header {
+            background: linear-gradient(135deg, #1a1a1a 0%, #000000 100%);
+            min-height: 200px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            width: 100%;
+        }
+
+        .header-container {
+            position: relative;
+            width: 100%;
+            max-width: 1200px;
+            padding: 2rem;
+        }
+
+        .memory-modal {
+            background: #2a2a2a;
+            border-radius: 12px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            max-width: 600px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+            animation: modalSlideIn 0.6s ease-out;
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 2rem 1rem;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-title {
+            color: #ffffff;
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: #ffffff;
+            font-size: 1.5rem;
+            cursor: pointer;
+            padding: 0.25rem;
+            border-radius: 4px;
+            transition: background-color 0.2s;
+        }
+
+        .modal-close:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .modal-content {
+            padding: 1.5rem 2rem 2rem;
+        }
+
+        .memory-text {
+            color: #ffffff;
+            font-size: 1rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            opacity: 0.9;
+        }
+
+        .modal-actions {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+        }
+
+        .btn {
+            padding: 0.75rem 1.5rem;
+            border: none;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .btn-primary {
+            background: #0066cc;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #4a9eff;
+            transform: translateY(-1px);
+        }
+
+        .btn-secondary {
+            background: rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+        }
+
+        .btn-secondary:hover {
+            background: rgba(255, 255, 255, 0.2);
+        }
+
+        .header-background {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+            opacity: 0.3;
+            pointer-events: none;
+        }
+
+        .terminal-prompt {
+            position: absolute;
+            top: 1rem;
+            right: 2rem;
+            color: #4a9eff;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9rem;
+        }
+
+        .timeline-section {
+            position: absolute;
+            bottom: 2rem;
+            left: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: #ffffff;
+            font-size: 0.9rem;
+        }
+
+        .timeline-icon {
+            color: #4a9eff;
+        }
+
+        /* Animations */
+        @keyframes modalSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design for Header */
+        @media (max-width: 768px) {
+            .memory-header {
+                min-height: 300px;
+            }
+            
+            .header-container {
+                padding: 1rem;
+            }
+            
+            .memory-modal {
+                margin: 0 1rem;
+            }
+            
+            .modal-header,
+            .modal-content {
+                padding: 1rem 1.5rem;
+            }
+            
+            .modal-actions {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .btn {
+                width: 100%;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .modal-title {
+                font-size: 1.1rem;
+            }
+            
+            .memory-text {
+                font-size: 0.9rem;
+            }
+        }
+
+        
+        .file-preview {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            text-align: left;
+            display: none;
+        }
+
+        .file-preview.show {
+            display: block;
+        }
+
+        .preview-toggle {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-right: 0.5rem;
+        }
+
+        .preview-toggle:hover {
+            background: #5a6fd8;
+            transform: translateY(-1px);
+        }
+
+        .preview-toggle.active {
+            background: #4ecdc4;
+        }
+
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .image-modal.show {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .modal-title {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            color: white;
+            font-size: 1.1rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+        /* File Upload Styles */
+        .upload-section {
+            margin-top: 3rem;
+            padding: 2rem;
+            background: rgba(255, 255, 255, 0.8);
+            border-radius: 15px;
+            border: 2px dashed #ddd;
+            transition: all 0.3s ease;
+        }
+
+        .upload-section.dragover {
+            border-color: #4ecdc4;
+            background: rgba(78, 205, 196, 0.1);
+        }
+
+        .upload-area {
+            position: relative;
+            padding: 2rem;
+            text-align: center;
+            cursor: pointer;
+        }
+
+        .upload-icon {
+            font-size: 3rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .upload-text {
+            font-size: 1.2rem;
+            color: #666;
+            margin-bottom: 1rem;
+        }
+
+        .file-input {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        .upload-button {
+            background: linear-gradient(45deg, #4ecdc4, #44a08d);
+            color: white;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-top: 1rem;
+        }
+
+        .upload-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .file-list {
+            margin-top: 2rem;
+            text-align: left;
+        }
+
+        .file-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem;
+            margin: 0.5rem 0;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .file-info {
+            flex: 1;
+        }
+
+        .file-name {
+            font-weight: bold;
+            color: #333;
+            margin-bottom: 0.25rem;
+        }
+
+        .file-details {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        .file-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .action-button {
+            padding: 0.5rem 1rem;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+        }
+
+        .download-btn {
+            background: #4ecdc4;
+            color: white;
+        }
+
+        .delete-btn {
+            background: #ff6b6b;
+            color: white;
+        }
+
+        .action-button:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        .status-message {
+            margin-top: 1rem;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-weight: bold;
+        }
+
+        .status-success {
+            background: rgba(78, 205, 196, 0.2);
+            color: #2d7d7a;
+        }
+
+        .status-error {
+            background: rgba(255, 107, 107, 0.2);
+            color: #d63031;
+        }
+
+        .file-preview {
+            margin-top: 1rem;
+            padding: 1rem;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 10px;
+            text-align: left;
+            display: none;
+        }
+
+        .file-preview.show {
+            display: block;
+        }
+
+        .preview-toggle {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            transition: all 0.3s ease;
+            margin-right: 0.5rem;
+        }
+
+        .preview-toggle:hover {
+            background: #5a6fd8;
+            transform: translateY(-1px);
+        }
+
+        .preview-toggle.active {
+            background: #4ecdc4;
+        }
+
+        /* Image Modal Styles */
+        .image-modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            backdrop-filter: blur(5px);
+        }
+
+        .image-modal.show {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            position: relative;
+        }
+
+        .modal-image {
+            max-width: 100%;
+            max-height: 100%;
+            border-radius: 10px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+        }
+
+        .modal-close {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: rgba(0, 0, 0, 0.5);
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+        }
+
+        .modal-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: scale(1.1);
+        }
+
+        .modal-title {
+            position: absolute;
+            bottom: -40px;
+            left: 0;
+            color: white;
+            font-size: 1.1rem;
+            background: rgba(0, 0, 0, 0.7);
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+        }
+
+        .preview-image {
+            max-width: 200px;
+            max-height: 200px;
+            border-radius: 5px;
+            margin-top: 0.5rem;
+        }
+
+        .preview-text {
+            max-height: 200px;
+            overflow-y: auto;
+            background: #f5f5f5;
+            padding: 0.5rem;
+            border-radius: 5px;
+            font-family: monospace;
+            font-size: 0.9rem;
+            white-space: pre-wrap;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {
+                transform: translateY(0);
+            }
+            40% {
+                transform: translateY(-30px);
+            }
+            60% {
+                transform: translateY(-15px);
+            }
+        }
+
+        .bounce {
+            animation: bounce 1s ease;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 2rem;
+                margin: 10px;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .file-item {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 1rem;
+            }
+            
+            .file-actions {
+                width: 100%;
+                justify-content: space-between;
+            }
+        }
+    </style>
+</head>
+    <body>
+        <nav class="nav-links">
+            <a href="uploads.html" class="nav-link">📁 View Uploads</a>
+        </nav>
+        <!-- Memory Header Section -->
+        <header class="memory-header">
+            <div class="header-container">
+                <div class="memory-modal">
+                    <div class="modal-header">
+                        <h1 class="modal-title">Review 1 new memory</h1>
+                        <button class="modal-close" aria-label="Close modal">×</button>
+                    </div>
+                    <div class="modal-content">
+                        <p class="memory-text">
+                            The user prefers that before programming, the AI team conducts a root cause analysis as a team to diagnose what went wrong.
+                        </p>
+                        <div class="modal-actions">
+                            <button class="btn btn-secondary">View All</button>
+                            <button class="btn btn-secondary">Discard</button>
+                            <button class="btn btn-primary">Accept</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="header-background">
+                    <div class="terminal-prompt">zsh</div>
+                    <div class="timeline-section">
+                        <span class="timeline-icon">▶</span>
+                        <span class="timeline-text">TIMELINE</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="container">
+        <h1>Hello World!</h1>
+        <button class="hello-button" onclick="sayHello()">Hi! 👋</button>
+        <div class="message" id="message">Click the button to see some magic! ✨</div>
+        <div class="counter" id="counter">Clicks: 0</div>
+
+        <!-- File Upload Section -->
+        <div class="upload-section" id="uploadSection">
+            <h2>📁 File Upload & Preview</h2>
+            <p>Select files to preview and download them</p>
+            
+            <div class="upload-area" id="uploadArea">
+                <div class="upload-icon">📤</div>
+                <div class="upload-text">Drag & drop files here or click to browse</div>
+                <input type="file" class="file-input" id="fileInput" multiple accept=".txt,.pdf,.png,.jpg,.jpeg,.gif,.doc,.docx,.xls,.xlsx,.csv,.json,.md">
+                <button class="upload-button" onclick="document.getElementById('fileInput').click()">
+                    Choose Files
+                </button>
+            </div>
+            
+            <div id="statusMessage"></div>
+        </div>
+
+        <!-- File List -->
+        <div class="file-list" id="fileList">
+            <h3>📋 Selected Files</h3>
+            <div id="filesContainer"></div>
+        </div>
+
+        <!-- Image Modal -->
+        <div class="image-modal" id="imageModal">
+            <div class="modal-content">
+                <span class="modal-close" onclick="closeImageModal()">&times;</span>
+                <img class="modal-image" id="modalImage" alt="Full size image">
+                <div class="modal-title" id="modalTitle"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Header JavaScript
+        document.addEventListener('DOMContentLoaded', function() {
+            // Modal close functionality
+            const closeBtn = document.querySelector('.modal-close');
+            if (closeBtn) {
+                closeBtn.addEventListener('click', function() {
+                    const modal = document.querySelector('.memory-modal');
+                    modal.style.animation = 'modalSlideOut 0.3s ease-in forwards';
+                    setTimeout(() => {
+                        modal.style.display = 'none';
+                    }, 300);
+                });
+            }
+            
+            // Button interactions
+            const buttons = document.querySelectorAll('.btn');
+            buttons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    // Add ripple effect
+                    const ripple = document.createElement('span');
+                    ripple.classList.add('ripple');
+                    this.appendChild(ripple);
+                    
+                    setTimeout(() => {
+                        ripple.remove();
+                    }, 600);
+                });
+            });
+        });
+
+        // Add CSS for ripple effect and slide out animation
+        const style = document.createElement('style');
+        style.textContent = `
+            .btn {
+                position: relative;
+                overflow: hidden;
+            }
+            
+            .ripple {
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.3);
+                transform: scale(0);
+                animation: ripple 0.6s linear;
+                pointer-events: none;
+            }
+            
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+            
+            @keyframes modalSlideOut {
+                to {
+                    opacity: 0;
+                    transform: translateY(-20px);
+                }
+            }
+        `;
+        document.head.appendChild(style);
+
+        let clickCount = 0;
+        let selectedFiles = [];
+        const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#feca57', '#ff9ff3', '#54a0ff', '#5f27cd'];
+
+        // Confetti Animation
+        function createConfetti() {
+            const confettiCount = 150;
+            
+            for (let i = 0; i < confettiCount; i++) {
+                setTimeout(() => {
+                    const confetti = document.createElement('div');
+                    confetti.className = 'confetti';
+                    confetti.style.left = Math.random() * 100 + 'vw';
+                    confetti.style.top = '-10px';
+                    confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+                    confetti.style.transform = `rotate(${Math.random() * 360}deg)`;
+                    
+                    if (Math.random() > 0.5) {
+                        confetti.style.borderRadius = '50%';
+                    } else {
+                        confetti.style.borderRadius = '0';
+                    }
+                    
+                    document.body.appendChild(confetti);
+                    
+                    const animation = confetti.animate([
+                        { 
+                            transform: `translateY(0px) rotate(${Math.random() * 360}deg)`,
+                            opacity: 1
+                        },
+                        { 
+                            transform: `translateY(${window.innerHeight + 100}px) rotate(${Math.random() * 720}deg)`,
+                            opacity: 0
+                        }
+                    ], {
+                        duration: Math.random() * 3000 + 2000,
+                        easing: 'cubic-bezier(0.25, 0.46, 0.45, 0.94)'
+                    });
+                    
+                    animation.onfinish = () => {
+                        confetti.remove();
+                    };
+                }, i * 20);
+            }
+        }
+
+        function sayHello() {
+            clickCount++;
+            
+            document.getElementById('counter').textContent = `Clicks: ${clickCount}`;
+            
+            const message = document.getElementById('message');
+            message.classList.add('show');
+            
+            createConfetti();
+            
+            const button = document.querySelector('.hello-button');
+            button.classList.add('bounce');
+            setTimeout(() => {
+                button.classList.remove('bounce');
+            }, 1000);
+            
+            const messages = [
+                "Click the button to see some magic! ✨",
+                "Wow! That was amazing! 🎉",
+                "You're on fire! 🔥",
+                "Incredible! Keep going! 🚀",
+                "You're unstoppable! 💪",
+                "Legendary clicking! 👑",
+                "Confetti master! 🎊",
+                "You've got the magic touch! ✨"
+            ];
+            
+            const messageIndex = Math.min(clickCount - 1, messages.length - 1);
+            message.textContent = messages[messageIndex];
+            
+            if (clickCount === 1) {
+                console.log("🎵 First click! The party begins!");
+            }
+        }
+
+        // File Handling Functions
+        function showStatus(message, type = 'success') {
+            const statusDiv = document.getElementById('statusMessage');
+            statusDiv.className = `status-message status-${type}`;
+            statusDiv.textContent = message;
+            statusDiv.style.display = 'block';
+            
+            setTimeout(() => {
+                statusDiv.style.display = 'none';
+            }, 5000);
+        }
+
+        function formatFileSize(bytes) {
+            if (bytes === 0) return '0 Bytes';
+            const k = 1024;
+            const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+            const i = Math.floor(Math.log(bytes) / Math.log(k));
+            return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+        }
+
+        function getFileType(filename) {
+            const ext = filename.split('.').pop().toLowerCase();
+            const imageTypes = ['jpg', 'jpeg', 'png', 'gif', 'bmp', 'webp'];
+            const textTypes = ['txt', 'md', 'json', 'csv', 'js', 'html', 'css', 'py', 'java', 'cpp', 'c'];
+            
+            if (imageTypes.includes(ext)) return 'image';
+            if (textTypes.includes(ext)) return 'text';
+            if (ext === 'pdf') return 'pdf';
+            return 'other';
+        }
+
+        function createFilePreview(file) {
+            const fileType = getFileType(file.name);
+            const previewDiv = document.createElement('div');
+            previewDiv.className = 'file-preview';
+            
+            if (fileType === 'image') {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    previewDiv.innerHTML = `
+                        <strong>🖼️ Image Preview:</strong><br>
+                        <img src="${e.target.result}" class="preview-image" alt="Preview" onclick="openImageModal('${e.target.result}', '${file.name}')" style="cursor: pointer;">
+                        <p style="margin-top: 0.5rem; font-size: 0.9rem; color: #666;">Click image to view full size</p>
+                    `;
+                };
+                reader.readAsDataURL(file);
+            } else if (fileType === 'text') {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const content = e.target.result;
+                    const truncated = content.length > 1000 ? content.substring(0, 1000) + '...' : content;
+                    const isTruncated = content.length > 1000;
+                    previewDiv.innerHTML = `
+                        <strong>📄 Text Preview:</strong><br>
+                        <div class="preview-text">${truncated}</div>
+                        ${isTruncated ? `<p style="margin-top: 0.5rem; font-size: 0.9rem; color: #666;">Showing first 1000 characters. Download to see full content.</p>` : ''}
+                    `;
+                };
+                reader.readAsText(file);
+            } else if (fileType === 'pdf') {
+                previewDiv.innerHTML = `
+                    <strong>📕 PDF Preview:</strong><br>
+                    <div style="padding: 2rem; background: #f5f5f5; border-radius: 5px; text-align: center;">
+                        <div style="font-size: 3rem; margin-bottom: 1rem;">📄</div>
+                        <p><strong>${file.name}</strong></p>
+                        <p>PDF files cannot be previewed in the browser.</p>
+                        <p>Click Download to view the file.</p>
+                    </div>
+                `;
+            } else {
+                previewDiv.innerHTML = `
+                    <strong>📁 File Information:</strong><br>
+                    <div style="padding: 1rem; background: #f5f5f5; border-radius: 5px;">
+                        <p><strong>Type:</strong> ${file.type || 'Unknown'}</p>
+                        <p><strong>Size:</strong> ${formatFileSize(file.size)}</p>
+                        <p><strong>Last Modified:</strong> ${new Date(file.lastModified).toLocaleString()}</p>
+                        <p>This file type cannot be previewed. Click Download to access the file.</p>
+                    </div>
+                `;
+            }
+            
+            return previewDiv;
+        }
+
+        function createFileItem(file, index) {
+            const div = document.createElement('div');
+            div.className = 'file-item';
+            
+            const date = new Date().toLocaleDateString();
+            
+            div.innerHTML = `
+                <div class="file-info">
+                    <div class="file-name">${file.name}</div>
+                    <div class="file-details">${formatFileSize(file.size)} • ${date} • ${file.type || 'Unknown'}</div>
+                </div>
+                <div class="file-actions">
+                    <button class="preview-toggle" onclick="togglePreview(${index})" id="preview-btn-${index}">
+                        👁️ Preview
+                    </button>
+                    <button class="action-button download-btn" onclick="downloadFile(${index})">
+                        📥 Download
+                    </button>
+                    <button class="action-button delete-btn" onclick="deleteFile(${index})">
+                        🗑️ Remove
+                    </button>
+                </div>
+            `;
+            
+            // Add preview (hidden by default)
+            const preview = createFilePreview(file);
+            preview.id = `preview-${index}`;
+            div.appendChild(preview);
+            
+            return div;
+        }
+
+        function downloadFile(index) {
+            const file = selectedFiles[index];
+            const url = URL.createObjectURL(file);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = file.name;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            showStatus(`Downloaded ${file.name}! 🎉`, 'success');
+            createConfetti(); // Celebrate download!
+        }
+
+        function togglePreview(index) {
+            const previewDiv = document.getElementById(`preview-${index}`);
+            const previewBtn = document.getElementById(`preview-btn-${index}`);
+            
+            if (previewDiv.classList.contains('show')) {
+                // Hide preview
+                previewDiv.classList.remove('show');
+                previewBtn.textContent = '👁️ Preview';
+                previewBtn.classList.remove('active');
+            } else {
+                // Show preview
+                previewDiv.classList.add('show');
+                previewBtn.textContent = '🙈 Hide';
+                previewBtn.classList.add('active');
+                
+                // Add a subtle animation
+                previewDiv.style.opacity = '0';
+                previewDiv.style.transform = 'translateY(-10px)';
+                setTimeout(() => {
+                    previewDiv.style.transition = 'all 0.3s ease';
+                    previewDiv.style.opacity = '1';
+                    previewDiv.style.transform = 'translateY(0)';
+                }, 10);
+            }
+        }
+
+        function openImageModal(imageSrc, fileName) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            
+            modalImage.src = imageSrc;
+            modalTitle.textContent = fileName;
+            modal.classList.add('show');
+            
+            // Prevent body scroll when modal is open
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeImageModal() {
+            const modal = document.getElementById('imageModal');
+            modal.classList.remove('show');
+            
+            // Restore body scroll
+            document.body.style.overflow = 'auto';
+        }
+
+        // Close modal when clicking outside the image or pressing ESC
+        document.addEventListener('DOMContentLoaded', () => {
+            const modal = document.getElementById('imageModal');
+            modal.addEventListener('click', (e) => {
+                if (e.target === modal) {
+                    closeImageModal();
+                }
+            });
+            
+            // Close modal with ESC key
+            document.addEventListener('keydown', (e) => {
+                if (e.key === 'Escape' && modal.classList.contains('show')) {
+                    closeImageModal();
+                }
+            });
+        });
+
+        function deleteFile(index) {
+            selectedFiles.splice(index, 1);
+            showStatus('File removed from list', 'success');
+            displayFiles();
+        }
+
+        function displayFiles() {
+            const container = document.getElementById('filesContainer');
+            container.innerHTML = '';
+            
+            if (selectedFiles.length === 0) {
+                container.innerHTML = '<p style="text-align: center; color: #666; padding: 2rem;">No files selected yet</p>';
+                return;
+            }
+            
+            selectedFiles.forEach((file, index) => {
+                const fileItem = createFileItem(file, index);
+                container.appendChild(fileItem);
+            });
+        }
+
+        function handleFiles(files) {
+            const allowedExtensions = ['.txt', '.pdf', '.png', '.jpg', '.jpeg', '.gif', '.doc', '.docx', '.xls', '.xlsx', '.csv', '.json', '.md'];
+            
+            Array.from(files).forEach(file => {
+                const ext = '.' + file.name.split('.').pop().toLowerCase();
+                if (allowedExtensions.includes(ext)) {
+                    selectedFiles.push(file);
+                    showStatus(`Added ${file.name}! 🎉`, 'success');
+                } else {
+                    showStatus(`${file.name} - File type not allowed`, 'error');
+                }
+            });
+            
+            displayFiles();
+            createConfetti(); // Celebrate file addition!
+        }
+
+        // Drag and Drop
+        const uploadSection = document.getElementById('uploadSection');
+        const uploadArea = document.getElementById('uploadArea');
+        const fileInput = document.getElementById('fileInput');
+
+        uploadArea.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            uploadSection.classList.add('dragover');
+        });
+
+        uploadArea.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            uploadSection.classList.remove('dragover');
+        });
+
+        uploadArea.addEventListener('drop', (e) => {
+            e.preventDefault();
+            uploadSection.classList.remove('dragover');
+            
+            const files = e.dataTransfer.files;
+            if (files.length > 0) {
+                handleFiles(files);
+            }
+        });
+
+        fileInput.addEventListener('change', (e) => {
+            const files = e.target.files;
+            if (files.length > 0) {
+                handleFiles(files);
+            }
+        });
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log("🚀 Hello World Confetti App with File Upload loaded!");
+            console.log("🎉 Click the button to see the magic!");
+            console.log("📁 Select files to preview and download them!");
+            
+            displayFiles();
+        });
+    </script>
+</body>
+</html> 

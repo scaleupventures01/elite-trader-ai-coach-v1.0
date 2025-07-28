@@ -5,7 +5,7 @@
 
 ## 🎯 EXECUTIVE SUMMARY
 
-The root cause of Claude Sonnet 4 not working is **INVALID API KEY**, not a model availability issue. The API key provided (`sk-ant-api03-D9oPOqfXZMy9JpnMa0R3Bsl5kDTlcwCWtUvINcbRxOYZc3uGr3xj4jQUKapguY-XQpLRL-w4wndRAFOdc0MQ-4ed8DAAA`) is not valid for the Anthropic API.
+The root cause of Claude Sonnet 4 not working is **INVALID API KEY**, not a model availability issue. The API key provided (`[REMOVED FOR SECURITY]`) is not valid for the Anthropic API.
 
 ## 🔍 DETAILED ANALYSIS
 
